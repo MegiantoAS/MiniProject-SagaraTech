@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Mini Project
+![Mini Priject 1](https://res.cloudinary.com/dqieidsyc/image/upload/v1695361843/Screenshot_46_xojauc.png)
+
+#Algorithm Test 1
+
 ## Available Scripts
 
 In the project directory, you can run:

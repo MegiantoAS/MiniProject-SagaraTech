@@ -1,47 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import EditTask from '../context/EditTask';
+import React, { useState } from 'react';
+import EditTaskModal from '../context/EditTask';
+import colors from './TaskClors';
+import DeleteTaskModal from '../context/DeleteTask';
 
 const Card = ({ taskObj, index, deleteTask, updateListArray, isChecked, toggleCheckbox }) => {
   const [modal, setModal] = useState(false);
-
-  const colors = [
-    {
-      primaryColor: "#5D93E1",
-      secondaryColor: "#ECF3FC"
-    },
-    {
-      primaryColor: "#F9D288",
-      secondaryColor: "#FEFAF1"
-    },
-    {
-      primaryColor: "#5DC250",
-      secondaryColor: "#F2FAF1"
-    },
-    {
-      primaryColor: "#F48687",
-      secondaryColor: "#FDF1F1"
-    },
-    {
-      primaryColor: "#B964F7",
-      secondaryColor: "#F3F0FD"
-    }
-  ];
+  const [deleteConfirmationModal, setDeleteConfirmationModal] = useState(false);
 
   const toggle = () => {
     setModal(!modal);
   };
 
+  const toggleDeleteConfirmationModal = () => {
+    setDeleteConfirmationModal(!deleteConfirmationModal);
+  };
+
   const updateTask = (obj) => {
+    // Add updatedAt timestamp
+    obj.updatedAt = new Date().toISOString();
     updateListArray(obj, index);
   };
 
   const handleDelete = () => {
+    // Tampilkan modal konfirmasi
+    toggleDeleteConfirmationModal();
+  };
+
+  const confirmDelete = () => {
+    // Hapus tugas hanya jika pengguna mengonfirmasi
     deleteTask(index);
+    // Tutup modal konfirmasi
+    toggleDeleteConfirmationModal();
   };
 
   return (
     <div className="card-wrapper mr-5">
-      <div className="card-top" style={{ "background-color": colors[index % 5].primaryColor }}></div>
+      <div className="card-top" style={{ "background-color": colors[index % 5].primaryColor }}>
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="circle"></div>
+      </div>
       <div className="task-holder">
         <div style={{ "display": "flex", "alignItems": "center" }}>
           <input
@@ -54,6 +52,9 @@ const Card = ({ taskObj, index, deleteTask, updateListArray, isChecked, toggleCh
           </span>
         </div>
         <p className="mt-3">{taskObj.Description}</p>
+        <div>
+          <p>Created At: {new Date(taskObj.createdAt).toLocaleString()}</p>
+        </div>
         <div style={{ "position": "absolute", "right": "20px", "bottom": "20px" }}>
           <i className="far fa-edit ml-3" style={{ "color": colors[index % 5].primaryColor, "cursor": "pointer", "marginRight": "10px" }} onClick={() => setModal(true)}></i>
           <i className="fas fa-trash-alt" style={{ "color": colors[index % 5].primaryColor, "cursor": "pointer" }} onClick={handleDelete}></i>
@@ -64,7 +65,8 @@ const Card = ({ taskObj, index, deleteTask, updateListArray, isChecked, toggleCh
           <span className="text-danger">Not Completed</span>
         )}
       </div>
-      <EditTask modal={modal} toggle={toggle} updateTask={updateTask} taskObj={taskObj} />
+      <EditTaskModal modal={modal} toggle={toggle} updateTask={updateTask} taskObj={taskObj} />
+      <DeleteTaskModal isOpen={deleteConfirmationModal} toggle={toggleDeleteConfirmationModal} confirmDelete={confirmDelete} />
     </div>
   );
 };

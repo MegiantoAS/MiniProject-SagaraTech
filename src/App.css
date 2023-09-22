@@ -1,7 +1,7 @@
 .header{
   height: 200px;
   width: 100%;
-  background-color : #E9EEF6;
+  background-color : #ac39a3;
   padding-top: 50px;
 }
 
@@ -33,16 +33,17 @@
   display : flex;
   flex-direction: column;
   position: relative;
+  overflow-y: auto;
 }
 
-.card-header{
+.card-header {
   margin-top: 1px;
   margin-bottom: 10px;
-  max-width: 80px;
   height: 30px;
   padding: 1px 10px !important;
   text-align: center;
 }
+
 
 .task-container{
   height: 500px;
@@ -59,3 +60,14 @@ input[type="checkbox"] {
   margin-right: 10px;
   cursor: pointer;
 }
+
+.circle {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 5px;
+  display: inline-block;
+  margin: 9px;
+}
+
