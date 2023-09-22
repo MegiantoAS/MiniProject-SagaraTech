@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ![Algorithm Test 1](https://res.cloudinary.com/dqieidsyc/image/upload/v1695362644/Screenshot_2023-09-22_130345_wjzidu.png)
 
 #Algorithm Test 2
-![Algorithm Test 2](https://res.cloudinary.com/dqieidsyc/image/upload/v1695362644/Screenshot_2023-09-22_130345_wjzidu.png)
+![Algorithm Test 2](https://res.cloudinary.com/dqieidsyc/image/upload/v1695362699/2_xarfwa.png)
 
 ## Available Scripts
 
